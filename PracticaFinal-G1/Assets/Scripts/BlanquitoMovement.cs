@@ -17,6 +17,8 @@ public class BlanquitoMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movimientoX = 0f;
+
         if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
         {
             movimientoX = mover;
@@ -30,6 +32,33 @@ public class BlanquitoMovement : MonoBehaviour
         if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
         {
             saltando = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        rb2d.linearVelocity = new Vector2(movimientoX, rb2d.linearVelocity.y);
+        if (saltando && ensuelo)
+        {
+            rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, salto);
+            saltando = false;
+            ensuelo = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Suelo"))
+        {
+            ensuelo = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Suelo"))
+        {
+            ensuelo = false;
         }
     }
 }
