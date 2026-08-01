@@ -29,7 +29,7 @@ public class BlanquitoMovement : MonoBehaviour
             movimientoX = -mover;
         }
 
-        if (Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
+        if ((Keyboard.current.wKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame) && ensuelo)
         {
             saltando = true;
         }
@@ -48,17 +48,11 @@ public class BlanquitoMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Suelo"))
-        {
-            ensuelo = true;
-        }
+        ensuelo = true; 
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Suelo"))
-        {
-            ensuelo = false;
-        }
+        ensuelo = false;
     }
 }
