@@ -6,6 +6,11 @@ public class BlanquitoMovement : MonoBehaviour
     public float mover = 5f;
     public float salto = 8f;
 
+    [Header("Disparo")]
+    public GameObject proyectilPrefab;
+    public Transform puntoDisparo;
+    public float tiempoEntreDisparos = 0.4f;
+
     private Rigidbody2D rb2d;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -13,6 +18,8 @@ public class BlanquitoMovement : MonoBehaviour
     private float movimientoX;
     private bool saltando;
     private bool ensuelo;
+    private bool mirandoDerecha = true;
+    private float siguienteDisparo;
 
     void Start()
     {
@@ -32,6 +39,7 @@ public class BlanquitoMovement : MonoBehaviour
             Keyboard.current.rightArrowKey.isPressed)
         {
             movimientoX = mover;
+            mirandoDerecha = true;
             spriteRenderer.flipX = false;
         }
 
@@ -39,6 +47,7 @@ public class BlanquitoMovement : MonoBehaviour
             Keyboard.current.leftArrowKey.isPressed)
         {
             movimientoX = -mover;
+            mirandoDerecha = false;
             spriteRenderer.flipX = true;
         }
 
@@ -46,6 +55,12 @@ public class BlanquitoMovement : MonoBehaviour
              Keyboard.current.upArrowKey.wasPressedThisFrame) && ensuelo)
         {
             saltando = true;
+        }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame &&
+            Time.time >= siguienteDisparo)
+        {
+            Disparar();
         }
 
         animator.SetFloat("Velocidad", Mathf.Abs(movimientoX));
@@ -69,6 +84,49 @@ public class BlanquitoMovement : MonoBehaviour
 
             saltando = false;
             ensuelo = false;
+        }
+    }
+
+    void Disparar()
+    {
+        if (proyectilPrefab == null)
+        {
+            Debug.LogError("No asignaste el Proyectil Prefab en Namor.");
+            return;
+        }
+
+        if (puntoDisparo == null)
+        {
+            Debug.LogError("No asignaste el Punto Disparo en Namor.");
+            return;
+        }
+
+        siguienteDisparo = Time.time + tiempoEntreDisparos;
+
+        animator.SetTrigger("Golpeado");
+
+        GameObject nuevoProyectil = Instantiate(
+            proyectilPrefab,
+            puntoDisparo.position,
+            Quaternion.identity
+        );
+
+        Proyectil proyectil = nuevoProyectil.GetComponent<Proyectil>();
+
+        if (proyectil == null)
+        {
+            Debug.LogError("El prefab no tiene el script Proyectil.");
+            Destroy(nuevoProyectil);
+            return;
+        }
+
+        if (mirandoDerecha)
+        {
+            proyectil.EstablecerDireccion(Vector2.right);
+        }
+        else
+        {
+            proyectil.EstablecerDireccion(Vector2.left);
         }
     }
 
