@@ -17,6 +17,9 @@ public class BlanquitoMovement : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        animator.enabled = true;
+        animator.Play("Idle");
     }
 
     void Update()
