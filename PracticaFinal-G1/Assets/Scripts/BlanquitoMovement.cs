@@ -8,6 +8,7 @@ public class BlanquitoMovement : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     private float movimientoX;
     private bool saltando;
@@ -17,6 +18,7 @@ public class BlanquitoMovement : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         animator.enabled = true;
         animator.Play("Idle");
@@ -30,12 +32,14 @@ public class BlanquitoMovement : MonoBehaviour
             Keyboard.current.rightArrowKey.isPressed)
         {
             movimientoX = mover;
+            spriteRenderer.flipX = false;
         }
 
         if (Keyboard.current.aKey.isPressed ||
             Keyboard.current.leftArrowKey.isPressed)
         {
             movimientoX = -mover;
+            spriteRenderer.flipX = true;
         }
 
         if ((Keyboard.current.wKey.wasPressedThisFrame ||
