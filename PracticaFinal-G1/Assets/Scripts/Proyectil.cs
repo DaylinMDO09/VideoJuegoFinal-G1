@@ -5,10 +5,14 @@ public class Proyectil : MonoBehaviour
     public float velocidad = 10f;
     public float tiempoDeVida = 3f;
 
+    private Rigidbody2D rb2d;
+
     private Vector2 direccion;
 
     void Start()
     {
+        rb2d = GetComponent<Rigidbody2D>();
+        rb2d.linearVelocity = direccion * velocidad;
         Destroy(gameObject, tiempoDeVida);
     }
 
@@ -24,9 +28,12 @@ public class Proyectil : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-            return;
+        VidaEnemigoSimple enemigo = collision.GetComponentInParent<VidaEnemigoSimple>();
 
-        Destroy(gameObject);
+        if (enemigo != null)
+        {
+            enemigo.RecibirDanio(1);
+            Destroy(gameObject);
+        }
     }
 }
