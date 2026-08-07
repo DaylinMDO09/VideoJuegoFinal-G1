@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class BlanquitoMovement : MonoBehaviour
 {
@@ -70,20 +71,23 @@ public class BlanquitoMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb2d.linearVelocity = new Vector2(
-            movimientoX,
-            rb2d.linearVelocity.y
-        );
-
-        if (saltando && ensuelo)
+        if (!recibiendoGolpe)
         {
             rb2d.linearVelocity = new Vector2(
-                rb2d.linearVelocity.x,
-                salto
+                movimientoX,
+                rb2d.linearVelocity.y
             );
 
-            saltando = false;
-            ensuelo = false;
+            if (saltando && ensuelo)
+            {
+                rb2d.linearVelocity = new Vector2(
+                    rb2d.linearVelocity.x,
+                    salto
+                );
+
+                saltando = false;
+                ensuelo = false;
+            }
         }
     }
 
@@ -138,5 +142,43 @@ public class BlanquitoMovement : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         ensuelo = false;
+    }
+
+    private bool recibiendoGolpe = false;
+
+    [SerializeField] private float tiempoEmpuje = 0.25f;
+
+
+    public void RecibirGolpe(Vector3 posicionEnemigo, float fuerza)
+    {
+        if (!recibiendoGolpe)
+        {
+            StartCoroutine(EmpujarJugador(posicionEnemigo, fuerza));
+        }
+    }
+
+    private IEnumerator EmpujarJugador(Vector3 posicionEnemigo, float fuerza)
+    {
+        recibiendoGolpe = true;
+
+        float direccion;
+
+        if (transform.position.x < posicionEnemigo.x)
+        {
+            direccion = -1f;
+        }
+        else
+        {
+            direccion = 1f;
+        }
+
+        rb2d.linearVelocity = new Vector2(
+            direccion * fuerza,
+            fuerza * 0.6f
+        );
+
+        yield return new WaitForSeconds(tiempoEmpuje);
+
+        recibiendoGolpe = false;
     }
 }

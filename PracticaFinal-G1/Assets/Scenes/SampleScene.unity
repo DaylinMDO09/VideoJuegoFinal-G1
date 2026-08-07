@@ -241,6 +241,8 @@ GameObject:
   - component: {fileID: 64991159}
   - component: {fileID: 64991163}
   - component: {fileID: 64991164}
+  - component: {fileID: 64991166}
+  - component: {fileID: 64991165}
   m_Layer: 0
   m_Name: ComplexEnemy
   m_TagString: Untagged
@@ -261,8 +263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ComplexEnemy
   player: {fileID: 1370380633}
-  detectionRange: 2.5
+  detectionRange: 14
   speed: 1.25
+  tiempoHit: 0.35
 --- !u!95 &64991160
 Animator:
   serializedVersion: 7
@@ -432,6 +435,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &64991165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64991158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ada361439bc074da076104cf558988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DanioEnemigo
+  danio: 1
+  fuerzaEmpuje: 10
+--- !u!114 &64991166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64991158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1eb4f6c40bff954a9f047f1604739c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaEnemigoSimple
+  vidaMaxima: 4
 --- !u!1 &88766292
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +754,7 @@ GameObject:
   - component: {fileID: 164754038}
   - component: {fileID: 164754039}
   - component: {fileID: 164754040}
+  - component: {fileID: 164754041}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Spike
@@ -930,6 +961,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   vidaMaxima: 2
+--- !u!114 &164754041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164754033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ada361439bc074da076104cf558988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DanioEnemigo
+  danio: 1
+  fuerzaEmpuje: 8
 --- !u!1 &171991662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,6 +1066,37 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &319104425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319104426}
+  m_Layer: 0
+  m_Name: PuntoDisparo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319104426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319104425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.109, y: -0.1327, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1007511983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &336151383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +1759,7 @@ GameObject:
   - component: {fileID: 472526719}
   - component: {fileID: 472526718}
   - component: {fileID: 472526717}
+  - component: {fileID: 472526724}
   m_Layer: 0
   m_Name: SimpleEnemy (2)
   m_TagString: Spike
@@ -1889,6 +1966,20 @@ Transform:
   - {fileID: 991676334}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &472526724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472526716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ada361439bc074da076104cf558988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DanioEnemigo
+  danio: 1
+  fuerzaEmpuje: 8
 --- !u!1 &473586626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,7 +2220,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.930744, y: 0.016204119, z: -10}
+  m_LocalPosition: {x: -49.49616, y: 0.02216661, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2554,11 +2645,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.361
+      value: 1.418
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.003
+      value: -0.005
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3921,6 +4012,11 @@ GameObject:
   - component: {fileID: 1007511983}
   - component: {fileID: 1007511982}
   - component: {fileID: 1007511981}
+  - component: {fileID: 1007511985}
+  - component: {fileID: 1007511984}
+  - component: {fileID: 1007511986}
+  - component: {fileID: 1007511987}
+  - component: {fileID: 1007511988}
   m_Layer: 0
   m_Name: MakitoEnemy
   m_TagString: Untagged
@@ -4021,9 +4117,129 @@ Transform:
   m_LocalPosition: {x: 148.25, y: -1.1, z: 0}
   m_LocalScale: {x: 18.838917, y: 34.851997, z: 18.838917}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 319104426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1007511984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007511980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab428fd779da74fbac18ba019bc462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FinalBoss
+  player: {fileID: 1370380633}
+  detectionRange: 15
+  speed: 4
+  distanciaMinima: 3
+  proyectilPrefab: {fileID: 21761936204527072, guid: 0c7f653dbda1a8c4f9553c90d484e114, type: 3}
+  puntoDisparo: {fileID: 319104426}
+  tiempoEntreDisparos: 2
+--- !u!50 &1007511985
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007511980}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &1007511986
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007511980}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.0022783875, y: -0.038178947}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.22886255, y: 0.24364209}
+  m_EdgeRadius: 0
+--- !u!114 &1007511987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007511980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ada361439bc074da076104cf558988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DanioEnemigo
+  danio: 1
+  fuerzaEmpuje: 10
+--- !u!114 &1007511988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007511980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1eb4f6c40bff954a9f047f1604739c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VidaEnemigoSimple
+  vidaMaxima: 6
 --- !u!1 &1015517039
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,11 +4697,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.3155
+      value: 4.604
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.521
+      value: 0.593
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5161,6 +5377,7 @@ MonoBehaviour:
   proyectilPrefab: {fileID: 3513637834939218827, guid: cc84a57ef8adbc44d96619cb03fe51d5, type: 3}
   puntoDisparo: {fileID: 1593553675}
   tiempoEntreDisparos: 0.4
+  tiempoEmpuje: 0.25
 --- !u!50 &1370380635
 Rigidbody2D:
   serializedVersion: 5
@@ -6142,11 +6359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.94
+      value: 4.161
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0044
+      value: -0.016
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6791,6 +7008,7 @@ GameObject:
   - component: {fileID: 1666618867}
   - component: {fileID: 1666618866}
   - component: {fileID: 1666618865}
+  - component: {fileID: 1666618872}
   m_Layer: 0
   m_Name: SimpleEnemy (1)
   m_TagString: Spike
@@ -6997,6 +7215,20 @@ Transform:
   - {fileID: 2011564699}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1666618872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666618864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48ada361439bc074da076104cf558988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DanioEnemigo
+  danio: 1
+  fuerzaEmpuje: 8
 --- !u!1 &1730511852
 GameObject:
   m_ObjectHideFlags: 0
@@ -16491,11 +16723,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.771
+      value: 7.577
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.001
+      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17410,12 +17642,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1817424624}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 18.444447
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 17.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.61
+      value: -44.86
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.18
+      value: -5.27
       objectReference: {fileID: 0}
     - target: {fileID: 4534396792764465029, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17455,19 +17695,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8492346636628860972, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_Size.x
-      value: 0.15133229
+      value: 0.12430414
       objectReference: {fileID: 0}
     - target: {fileID: 8492346636628860972, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_Size.y
-      value: 0.07093964
+      value: 0.052908577
       objectReference: {fileID: 0}
     - target: {fileID: 8492346636628860972, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_Offset.x
-      value: -0.0043338574
+      value: -0.0077121444
       objectReference: {fileID: 0}
     - target: {fileID: 8492346636628860972, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_Offset.y
-      value: -0.04453018
+      value: -0.05354571
       objectReference: {fileID: 0}
     - target: {fileID: 8943143564460816838, guid: 74d866c0b566320458aa99eb5dafdcf0, type: 3}
       propertyPath: m_Name
